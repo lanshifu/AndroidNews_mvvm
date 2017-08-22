@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.lanshifu.androidnews_mvvm.ui.vm.LoginViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入账号"
+            android:text="@={viewmodel.userName}" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:text="@={viewmodel.password}"
+            binding:onFocusChangeCommand="@{viewmodel.onFocusChangeCommand}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            binding:onClickCommand="@{viewmodel.loginOnClickCommand}"
+            android:text="登录" />
+
+    </LinearLayout>
+</layout>
