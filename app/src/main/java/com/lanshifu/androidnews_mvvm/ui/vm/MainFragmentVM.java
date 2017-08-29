@@ -1,6 +1,10 @@
 package com.lanshifu.androidnews_mvvm.ui.vm;
 
+import android.content.Context;
+import android.databinding.Observable;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
+import android.databinding.ObservableField;
 import android.databinding.ObservableList;
 import android.util.Log;
 
@@ -29,7 +33,18 @@ public class MainFragmentVM extends BaseViewModel {
     public static final String WECHAT_APPKEY = "26ce25ffcfc907a26263e2b0e3e23676";
     //每页请求的 item 数量
     public final int mPs = 21;
+    private static final String TAG = "MainFragmentVM";
+
     public int mPageMark = 1;
+
+
+    public MainFragmentVM(Context context) {
+        super(context);
+        requestNetWork();
+    }
+
+
+    public ObservableField<String> text = new ObservableField<>("12346789");
 
     public BindingCommand onLoadMoreCommand = new BindingCommand(new Action0() {
         @Override
@@ -38,6 +53,17 @@ public class MainFragmentVM extends BaseViewModel {
         }
     });
 
+    //下拉刷新
+    public BindingCommand onRefreshCommand = new BindingCommand(new Action0() {
+        @Override
+        public void call() {
+            ToastUtils.showShort("下拉刷新");
+        }
+    });
+
+
+    public ObservableBoolean isRequestSuccess = new ObservableBoolean(false);
+
 
     //给RecyclerView添加ObservableList
     public final ObservableList<NewsItemVM> observableList = new ObservableArrayList<>();
@@ -45,6 +71,7 @@ public class MainFragmentVM extends BaseViewModel {
     public ItemViewSelector<NewsItemVM> itemView = new ItemViewSelector<NewsItemVM>() {
         @Override
         public void select(ItemView itemView, int i, NewsItemVM newsItemVM) {
+            Log.e(TAG, "select: " );
             itemView.set(BR.viewModel, R.layout.item_news);
         }
 
@@ -76,6 +103,7 @@ public class MainFragmentVM extends BaseViewModel {
                         for (WechatItem.ResultBean.ListBean listBean : wechatItem.getResult().getList()) {
                             observableList.add(new NewsItemVM(context,listBean));
                         }
+//                        isRequestSuccess.set(true);
 
                     }
                 });

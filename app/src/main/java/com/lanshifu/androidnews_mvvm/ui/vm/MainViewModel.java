@@ -1,5 +1,7 @@
 package com.lanshifu.androidnews_mvvm.ui.vm;
 
+import android.content.Context;
+
 import me.goldze.mvvmhabit.base.BaseViewModel;
 
 /**
@@ -9,6 +11,7 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
 public class MainViewModel extends BaseViewModel {
 
 
-
-
+    public MainViewModel(Context context) {
+        super(context);
+    }
 }

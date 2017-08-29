@@ -16,12 +16,12 @@ import rx.functions.Action0;
 
 public class NewsItemVM extends BaseViewModel {
 
+    public WechatItem.ResultBean.ListBean listBean;
+
     public NewsItemVM(Context context, WechatItem.ResultBean.ListBean listBean) {
         super(context);
         this.listBean = listBean;
     }
-
-    public WechatItem.ResultBean.ListBean listBean;
 
 
 

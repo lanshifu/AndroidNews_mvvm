@@ -1,11 +1,14 @@
 package com.lanshifu.androidnews_mvvm.ui.fragment;
 
+import android.databinding.Observable;
+
 import com.lanshifu.androidnews_mvvm.BR;
 import com.lanshifu.androidnews_mvvm.R;
 import com.lanshifu.androidnews_mvvm.databinding.FragmentMainBinding;
 import com.lanshifu.androidnews_mvvm.ui.vm.MainFragmentVM;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * Created by lanxiaobin on 2017/8/29.
@@ -26,11 +29,19 @@ public class MainFragment extends BaseFragment<FragmentMainBinding,MainFragmentV
 
     @Override
     public MainFragmentVM initViewModel() {
-        return new MainFragmentVM();
+        return new MainFragmentVM(this.getContext());
     }
 
     @Override
     public void initViewObservable() {
-        viewModel.requestNetWork();
+//        viewModel.requestNetWork();
+        viewModel.isRequestSuccess.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                ToastUtils.showShort("刷新");
+//                refreshLayout();
+            }
+        });
+        viewModel.text.set("123456789");
     }
 }
