@@ -16,12 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入账号"
+            android:inputType="number"
             android:text="@={viewmodel.userName}" />
 
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberPassword"
             android:hint="请输入密码"
             android:text="@={viewmodel.password}"
             binding:onFocusChangeCommand="@{viewmodel.onFocusChangeCommand}"/>
@@ -31,6 +33,14 @@
             android:layout_height="wrap_content"
             binding:onClickCommand="@{viewmodel.loginOnClickCommand}"
             android:text="登录" />
+
+        <TextView
+            android:padding="@dimen/dp_16"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            binding:onClickCommand="@{viewmodel.registerClickCommand}"
+            android:text="注册" />
 
     </LinearLayout>
 </layout>

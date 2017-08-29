@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+        <variable
+            name="viewModel"
+            type="com.lanshifu.androidnews_mvvm.ui.vm.MainFragmentVM" />
+
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:title="新闻列表"
+            android:titleTextColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:itemView="@{viewModel.itemView}"
+            app:items="@{viewModel.observableList}"
+            app:layoutManager="@{LayoutManagers.linear()}"
+            app:lineManager="@{LineManagers.horizontal()}"
+           />
+
+
+
+
+</LinearLayout>
+
+
+    </layout>

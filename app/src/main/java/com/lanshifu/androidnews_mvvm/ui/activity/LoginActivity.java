@@ -23,8 +23,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding,LoginViewMo
         return R.layout.activity_login;
     }
 
+    /**  viewmodel id 绑定*/
     @Override
     public int initVariableId() {
+        //BR，类似于R。
         return BR.viewmodel;
     }
 
@@ -33,10 +35,13 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding,LoginViewMo
         //View持有ViewModel的引用 (这里暂时没有用Dagger2解耦)
         return new LoginViewModel(this);
     }
+    /***/
 
+
+    //可以初始化一些参数
     @Override
     public void initViewObservable() {
-        String s = viewModel.userName.get();
-        Log.e(TAG, "initViewObservable: "+s );
+        viewModel.userName.set("123");
+        viewModel.password.set("123");
     }
 }

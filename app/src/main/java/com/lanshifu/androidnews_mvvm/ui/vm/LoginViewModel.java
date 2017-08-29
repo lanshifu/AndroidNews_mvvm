@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.lanshifu.androidnews_mvvm.ui.activity.MainActivity;
+
 import java.util.Observable;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
@@ -49,6 +51,13 @@ public class LoginViewModel extends BaseViewModel {
         }
     });
 
+    public BindingCommand registerClickCommand = new BindingCommand(new Action0() {
+        @Override
+        public void call() {
+            ToastUtils.showShort("点击了注册");
+        }
+    });
+
     /**
      * 网络模拟一个登陆操作
      **/
@@ -62,17 +71,14 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入密码！");
             return;
         }
-        Log.e(TAG, "login: user="+userName.get());
-        Log.e(TAG, "login: pass="+password.get());
-        Toast.makeText(context,userName.get()+","+password.get(),Toast.LENGTH_SHORT).show();
-//        ToastUtils.showShort(userName.get()+","+password.get());
         showDialog();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 dismissDialog();
+                startActivity(MainActivity.class);
             }
-        }, 3 * 1000);
+        }, 1 * 1000);
     }
 
 }
