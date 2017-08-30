@@ -3,10 +3,13 @@
 <layout>
 
     <data>
+
         <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
         <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+
         <variable
-            name="viewModel"
+            name="viewmodel"
             type="com.lanshifu.androidnews_mvvm.ui.vm.MainFragmentVM" />
 
     </data>
@@ -18,35 +21,67 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            binding:title="新闻列表"
-            binding:titleTextColor="@color/white"
+        <android.support.design.widget.AppBarLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/colorPrimary"/>
+            android:layout_height="wrap_content">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/comm_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_weight="1"
-            android:background="@color/gray"
+                <ImageView
+                    android:visibility="gone"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_8"
+                    android:id="@+id/iv_menu"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:id="@+id/comm_toolbar_title"
+                    style="?attr/titleTextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ellipsize="end"
+                    android:textColor="@color/white"
+                    android:text="新闻列表"
+                    android:maxLines="1"/>
+
+            </FrameLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            binding:itemView="@{viewModel.itemView}"
-            binding:items="@{viewModel.observableList}"
-            binding:layoutManager="@{LayoutManagers.linear()}"
-            binding:lineManager="@{LineManagers.vertical()}"
-           />
+            binding:onRefreshCommand="@{viewmodel.onRefreshCommand}"
+            binding:onLoadMoreCommand="@{viewmodel.onLoadMoreCommand}"
+            >
 
-            <TextView
-                android:padding="@dimen/dp_8"
-                android:text="@{viewModel.text}"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            binding:itemView="@{viewmodel.itemView}"
+            binding:items="@{viewmodel.observableList}"
+            binding:layoutManager="@{LayoutManagers.grid(2)}"
+            binding:lineManager="@{LineManagers.horizontal()}" />
 
-</LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
-    </layout>
+    </LinearLayout>
+
+
+</layout>

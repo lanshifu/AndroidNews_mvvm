@@ -1,9 +1,11 @@
 package com.lanshifu.androidnews_mvvm.ui.vm;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.lanshifu.androidnews_mvvm.bean.WechatItem;
+import com.lanshifu.androidnews_mvvm.ui.activity.NewsDetailActivity;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -30,10 +32,13 @@ public class NewsItemVM extends BaseViewModel {
         @Override
         public void call() {
             //跳转到详情界面,传入条目的实体对象
-            Bundle mBundle = new Bundle();
-            mBundle.putParcelable("entity", listBean);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("listBean", listBean);
             ToastUtils.showShort("点击了"+listBean.getTitle());
-//            startContainerActivity(DetailFragment.class.getCanonicalName(), mBundle);
+
+            Intent intent = new Intent(context,NewsDetailActivity.class);
+            intent.putExtras(bundle);
+            context.startActivity(intent);
         }
     });
 

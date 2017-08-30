@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.lanshifu.androidnews_mvvm.R;
 import com.lanshifu.androidnews_mvvm.databinding.ActivityMainBinding;
 import com.lanshifu.androidnews_mvvm.ui.fragment.DemoFragment;
+import com.lanshifu.androidnews_mvvm.ui.fragment.LiveFragment;
 import com.lanshifu.androidnews_mvvm.ui.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Class[] fragments = new Class[]{
-            MainFragment.class, DemoFragment.class,
+            MainFragment.class, LiveFragment.class,
             DemoFragment.class, DemoFragment.class};
 
 
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //隐藏系统自带的状态栏
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //隐藏掉整个ActionBar
         getSupportActionBar().hide();
 

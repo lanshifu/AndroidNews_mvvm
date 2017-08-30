@@ -34,14 +34,14 @@ public class MainFragment extends BaseFragment<FragmentMainBinding,MainFragmentV
 
     @Override
     public void initViewObservable() {
-//        viewModel.requestNetWork();
         viewModel.isRequestSuccess.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                ToastUtils.showShort("刷新");
-//                refreshLayout();
+                binding.smartRefreshLayout.finishRefresh();
+                binding.smartRefreshLayout.finishLoadmore();
             }
         });
-        viewModel.text.set("123456789");
+
+        binding.smartRefreshLayout.autoRefresh();
     }
 }
