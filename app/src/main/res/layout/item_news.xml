@@ -4,7 +4,7 @@
     <data>
         <import type="com.lanshifu.androidnews_mvvm.ui.vm.NewsItemVM" />
         <variable
-            name="viewModel"
+            name="viewmodel"
             type="NewsItemVM" />
     </data>
 
@@ -12,21 +12,24 @@
         xmlns:binding="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        binding:onClickCommand="@{viewmodel.itemClick}"
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            binding:url="@{viewmodel.listBean.firstImg}"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:layout_gravity="center_horizontal"
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
-            android:text="123" />
+            android:text="@{viewmodel.listBean.title}" />
     </LinearLayout>
 </layout>
