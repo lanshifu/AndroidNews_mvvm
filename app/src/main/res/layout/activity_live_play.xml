@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lanshifu.androidnews_mvvm.ui.vm.LivePlayVM" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+            <SurfaceView
+                android:id="@+id/surfaceview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackgroundBorderless" />
+
+            <FrameLayout
+                android:id="@+id/progressbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:visibility="gone">
+
+                <ProgressBar
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp" />
+
+            </FrameLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                binding:onClickCommand="@{viewmodel.onScreenClickCommand}"
+                android:id="@+id/layout_portrait"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_back_portrait"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/gray"
+                    android:padding="@dimen/dp_4"
+                    android:scaleType="centerCrop"
+                    binding:onClickCommand="@{viewmodel.onBackClickCommand}"
+                    android:src="@drawable/selector_btn_back" />
+
+                <ImageView
+                    android:id="@+id/iv_fullscreen_portrait"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/gray"
+                    android:padding="@dimen/dp_4"
+                    android:scaleType="centerCrop"
+                    binding:onClickCommand="@{viewmodel.onFullScreenClickCommand}"
+                    android:src="@drawable/selector_btn_fullscreen" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/iv_danmu_visible_portrait"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/gray"
+                    android:padding="8.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/selector_btn_danmu_on" />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

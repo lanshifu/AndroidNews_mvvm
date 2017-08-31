@@ -16,10 +16,8 @@ import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
 public class BaseViewModel implements IBaseViewModel {
     protected Context context;
 
-
-
-    public BaseViewModel() {
-    }
+//    public BaseViewModel() {
+//    }
     public BaseViewModel(Context context) {
         this.context = context;
     }

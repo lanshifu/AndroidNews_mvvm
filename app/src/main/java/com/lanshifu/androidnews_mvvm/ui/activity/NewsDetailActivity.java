@@ -63,7 +63,7 @@ public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding,N
         if (!isNotLoad) {
             Glide.with(this)
                     .load(listBean.getFirstImg())
-                    .placeholder(R.mipmap.refresh_loading01)
+                    .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .crossFade(1000)
                     .into(binding.ivImage);
