@@ -49,8 +49,6 @@ public class LiveListInerItemVM extends BaseViewModel {
         }
     });
 
-
-
     private void enterRoom(String uid){
         RetrofitHelper.getLiveApi().enterRoom(uid)
                 .compose(RxSchedulerHelper.<Room>io_main())
