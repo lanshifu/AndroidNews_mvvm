@@ -3,6 +3,7 @@ package com.lanshifu.androidnews_mvvm.net;
 import com.lanshifu.androidnews_mvvm.MyApp;
 import com.lanshifu.androidnews_mvvm.net.api.APIException;
 import com.lanshifu.androidnews_mvvm.net.api.ApiConstant;
+import com.lanshifu.androidnews_mvvm.net.api.LiveApi;
 import com.lanshifu.androidnews_mvvm.net.api.WechatApi;
 
 import java.io.File;
@@ -176,5 +177,9 @@ public class RetrofitHelper {
 
     }
 
+
+    public static LiveApi getLiveApi(){
+        return createApi(LiveApi.class,ApiConstant.LIVE_URL);
+    }
 
 }

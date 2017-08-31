@@ -13,6 +13,7 @@ import com.lanshifu.androidnews_mvvm.R;
 import com.lanshifu.androidnews_mvvm.databinding.ActivityMainBinding;
 import com.lanshifu.androidnews_mvvm.ui.fragment.DemoFragment;
 import com.lanshifu.androidnews_mvvm.ui.fragment.LiveFragment;
+import com.lanshifu.androidnews_mvvm.ui.fragment.LiveListFragment;
 import com.lanshifu.androidnews_mvvm.ui.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Class[] fragments = new Class[]{
             MainFragment.class, LiveFragment.class,
-            DemoFragment.class, DemoFragment.class};
+            LiveListFragment.class, DemoFragment.class};
 
 
-    private String[] titles = new String[]{"主页", "周边", "我的", "更多"};
+    private String[] titles = new String[]{"主页", "TV", "全名", "更多"};
 
     private int[] icons = new int[]{
             R.drawable.tab_home_selector, R.drawable.tab_around_selector,

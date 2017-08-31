@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers" />
+
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+
+        <variable
+            name="viewmodel"
+            type="com.lanshifu.androidnews_mvvm.ui.vm.LiveListInerVM" />
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="6dp">
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginRight="4dp"
+                binding:url="@{viewmodel.icon}"/>
+
+            <TextView
+                android:id="@+id/tvCategroy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="@{viewmodel.title}"
+                android:textSize="@dimen/dp_12" />
+
+            <TextView
+                android:id="@+id/tvMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多"
+                android:textColor="@color/gray"
+                binding:onClickCommand= "@{viewmodel.onMoreClickCommand}"
+                android:textSize="@dimen/dp_12" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            binding:itemView="@{viewmodel.itemView}"
+            binding:items="@{viewmodel.observableList}"
+            binding:layoutManager="@{LayoutManagers.grid(2)}" />
+
+
+    </LinearLayout>
+
+</layout>

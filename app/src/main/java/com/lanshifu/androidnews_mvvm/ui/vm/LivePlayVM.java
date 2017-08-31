@@ -6,6 +6,7 @@ import android.databinding.ObservableBoolean;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 import rx.functions.Action0;
 import rx.functions.Action1;
 
@@ -22,10 +23,12 @@ public class LivePlayVM extends BaseViewModel {
 
     public ObservableBoolean isClickFullScreen = new ObservableBoolean(false);
     public ObservableBoolean isScreenClick = new ObservableBoolean(false);
+    public ObservableBoolean isRotateClick = new ObservableBoolean(false);
 
-    public BindingCommand<Boolean> onFullScreenClickCommand = new BindingCommand<Boolean>(new Action1<Boolean>() {
+    public BindingCommand onFullScreenClickCommand = new BindingCommand(new Action0() {
+
         @Override
-        public void call(Boolean aBoolean) {
+        public void call() {
             isClickFullScreen.set(!isClickFullScreen.get());
         }
     });
@@ -36,10 +39,17 @@ public class LivePlayVM extends BaseViewModel {
             ((Activity)context).finish();
         }
     });
+
     public BindingCommand onScreenClickCommand = new BindingCommand(new Action0() {
         @Override
         public void call() {
             isScreenClick.set(!isScreenClick.get());
+        }
+    });
+    public BindingCommand onRotateClickCommand = new BindingCommand(new Action0() {
+        @Override
+        public void call() {
+            isRotateClick.set(!isRotateClick.get());
         }
     });
 }

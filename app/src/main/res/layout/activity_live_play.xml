@@ -16,16 +16,12 @@
         android:orientation="vertical">
 
         <FrameLayout
+            android:background="@color/white"
             android:id="@+id/layout_top"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            binding:onClickCommand="@{viewmodel.onScreenClickCommand}"
             android:layout_weight="4">
-
-            <SurfaceView
-                android:id="@+id/surfaceview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="?selectableItemBackgroundBorderless" />
 
             <FrameLayout
                 android:id="@+id/progressbar"
@@ -44,8 +40,14 @@
 
             </FrameLayout>
 
+            <com.pili.pldroid.player.widget.PLVideoTextureView
+                android:id="@+id/plVideoTextureView"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                binding:onClickCommand="@{viewmodel.onScreenClickCommand}"
+
                 android:id="@+id/layout_portrait"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -77,7 +79,6 @@
                     android:src="@drawable/selector_btn_fullscreen" />
 
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/iv_danmu_visible_portrait"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
@@ -86,6 +87,7 @@
                     android:background="@color/gray"
                     android:padding="8.5dp"
                     android:scaleType="centerCrop"
+                    binding:onClickCommand="@{viewmodel.onRotateClickCommand}"
                     android:src="@drawable/selector_btn_danmu_on" />
             </RelativeLayout>
 
@@ -93,11 +95,12 @@
 
         <LinearLayout
             android:id="@+id/layout_bottom"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
         </LinearLayout>
 
